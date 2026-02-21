@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Perle Activity Snapshot</title>
+</head>
+<body>
+  <h2>Perle Activity Snapshot</h2>
+  <input id="username" placeholder="Enter X username" />
+  <button onclick="checkActivity()">Check</button>
+  <pre id="result"></pre>
+
+  <script>
+    async function checkActivity() {
+      const username = document.getElementById("username").value;
+      const res = await fetch(`/api/fetch?username=${username}`);
+      const data = await res.json();
+      document.getElementById("result").innerText =
+        JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
